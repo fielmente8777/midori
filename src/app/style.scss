@@ -1,0 +1,214 @@
+@layer utilities {
+  a,
+  button {
+    cursor: pointer;
+  }
+
+  .box-shadow {
+    box-shadow: 0 7px 29px 0 rgba(100, 100, 111, 0.2);
+  }
+
+  // container sizes
+
+  .max_screen_width {
+    max-width: 1600px;
+    width: 100%;
+    margin-inline: auto;
+  }
+
+  .max_width {
+    max-width: 100%;
+    width: 100%;
+    margin-inline: auto;
+    padding-inline: 1rem;
+
+    @media (min-width: 768px) {
+      /* md */
+      max-width: 720px;
+    }
+
+    @media (min-width: 1024px) {
+      /* lg */
+      max-width: 960px;
+      padding-inline: 0;
+    }
+
+    @media (min-width: 1280px) {
+      /* xl */
+      max-width: 1140px;
+      padding-inline: 0;
+    }
+
+    @media (min-width: 1536px) {
+      /* 2xl */
+      max-width: 1320px;
+      padding-inline: 0;
+    }
+
+    @media (min-width: 1920px) {
+      /* 3xl */
+      max-width: 1440px;
+      padding-inline: 0;
+    }
+  }
+
+  // midori arch shape, see components/ArchImage.tsx
+  // the wrapper is the size container so "50cqw" on the clip = half the image width
+  .arch {
+    container-type: inline-size;
+  }
+
+  .arch__clip {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    border-radius: var(--arch-tl, 50cqw) var(--arch-tr, 50cqw)
+      var(--arch-br, 1rem) var(--arch-bl, 1rem);
+    // keeps the rounded clip intact while the image scales (Safari leaks corners otherwise)
+    isolation: isolate;
+    transform: translateZ(0);
+  }
+
+  // browsers without container units (Safari < 16, Firefox < 110)
+  @supports not (width: 1cqw) {
+    .arch__clip {
+      border-radius: 999px 999px 1rem 1rem;
+    }
+  }
+
+  // mobile desktop and across all devices
+
+  .hide-scroll::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scroll {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}
+
+// green dot bullets used in room highlights
+.dot-list {
+  li {
+    position: relative;
+    padding-left: 0.75rem;
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background-color: var(--p1);
+      transform: translateY(-50%);
+    }
+  }
+}
+
+// experience cards: staggered jump-up (rise, overshoot, settle) on scroll
+$ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+
+@keyframes jump-up {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 80px, 0);
+  }
+  55% {
+    opacity: 1;
+    transform: translate3d(0, -16px, 0);
+  }
+  75% {
+    transform: translate3d(0, 5px, 0);
+  }
+  90% {
+    transform: translate3d(0, -2px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes media-settle {
+  from {
+    transform: scale(1.12);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.place-card__media img {
+  transition: transform 1.2s $ease-out;
+}
+
+// hidden state only applies once JS has confirmed it can reveal it
+.reveal-ready .place-card {
+  --delay: calc(var(--i, 0) * 0.15s);
+  opacity: 0;
+}
+
+.reveal-ready.is-visible .place-card {
+  animation: jump-up 1s ease-out var(--delay) both;
+
+  img {
+    animation: media-settle 1.6s $ease-out var(--delay) backwards;
+  }
+}
+
+@media (hover: hover) {
+  .place-card:hover .place-card__media img {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// "reduce motion" users (incl. Windows with Animation effects off) get a plain fade, no movement
+@media (prefers-reduced-motion: reduce) {
+  .reveal-ready.is-visible .place-card {
+    animation: fade-in 0.8s ease-out var(--delay) both;
+  }
+  .reveal-ready.is-visible .place-card img {
+    animation: none;
+  }
+  .place-card__media img {
+    transition: none;
+  }
+}
+
+// react-datepicker theme
+.react-datepicker {
+  font-family: var(--font-inter);
+  border-color: var(--line);
+}
+.react-datepicker__header {
+  background-color: var(--background2);
+  border-bottom-color: var(--line);
+}
+.react-datepicker__day--selected,
+.react-datepicker__day--in-range,
+.react-datepicker__day--in-selecting-range,
+.react-datepicker__day--keyboard-selected {
+  background-color: var(--p1) !important;
+  color: #fff !important;
+}
+
+// review slider pagination
+.review-slider {
+  .swiper-pagination {
+    position: static;
+    margin-top: 1rem;
+  }
+  .swiper-pagination-bullet-active {
+    background-color: var(--p1);
+  }
+}

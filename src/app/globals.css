@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --background2: #e6f2e4;
+  --background3: #d9eec7;
+  --p1: #55aa47;
+  --p2: #77bc6c;
+  --accent: #f0d72f;
+  --input: #fef7ef;
+  --dark: #1e1e1e;
+  --light: #5c5c5c;
+  --line: #cfe3c9;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-background2: var(--background2);
+  --color-background3: var(--background3);
+  --color-p1: var(--p1);
+  --color-p2: var(--p2);
+  --color-accent: var(--accent);
+  --color-input: var(--input);
+  --color-dark: var(--dark);
+  --color-light: var(--light);
+  --color-line: var(--line);
+
+  --font-primary: var(--font-montserrat);
+  --font-secondary: var(--font-inter);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--dark);
+  font-family: var(--font-inter);
+}
+
+@keyframes offer-slide {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@utility animate-offer-slide {
+  animation: offer-slide 0.3s ease-out;
+}
