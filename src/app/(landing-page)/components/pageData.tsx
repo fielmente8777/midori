@@ -35,7 +35,7 @@ export const landingPageData = {
       {
         icon: <LuBedDouble />,
         title: "2 villas + a hut room",
-        description: "Room for up to 10 guests",
+        description: "Room for up to 12 guests",
       },
       {
         icon: <LuWaves />,
@@ -69,10 +69,10 @@ export const landingPageData = {
   staySection: {
     title: "Two villas and a hut room.",
     description:
-      "Take a villa for two to four, both villas for up to eight, or the hut room for two. Book all three and Midori is yours, for up to ten.",
+      "Take a villa for two to four, both villas for up to eight, or the hut room for two. Book all three and Midori is yours, for up to twelve.",
     villas: {
       title: "The villas",
-      tags: ["1,200 sq ft each", "2–4 guests per villa", "Direct pool access"],
+      tags: ["1,200 sq ft each", "10–12 guests per villa", "Direct pool access"],
       description:
         "Textured white walls, sunken living rooms and windows full of paddy. Each villa opens straight onto the pool, with a caretaker and cook on site.",
       features: [
@@ -91,7 +91,7 @@ export const landingPageData = {
     },
     hut: {
       title: "The hut room",
-      tags: ["Up to 2 guests", "Bunk bed", "Attached bath, courtyard view"],
+      tags: ["Up to 3 guests", "Bunk bed", "Attached bath, courtyard view"],
       description:
         "A cosy room for two with a bunk bed and its own bathroom that looks onto an open courtyard. Hut room guests have the same run of the farm, the Paddy Deck and the mango groves.",
       images: [
@@ -253,6 +253,51 @@ export const landingPageData = {
       "/images/dinner3.jpg",
     ],
     button: { label: "Plan a celebration", link: contact.WhatsappCta },
+  },
+
+  photoshootSection: {
+    title: "A backdrop for the photos you’ll keep.",
+    description:
+      "Golden paddy at sunset, a lantern-lit walkway, a macramé teepee under the mango trees. We style the set, you bring the moment.",
+    button: { label: "Plan a photoshoot", link: contact.WhatsappCta },
+    images: [
+      { src: "/images/photo1.jpg", caption: "The teepee set-up" },
+      {
+        src: "/images/photo2.jpg",
+        caption: "The paddy walkway at dusk",
+      },
+      { src: "/images/photo3.jpg", caption: "The Paddy Deck" },
+      { src: "/images/photo4.jpg", caption: "The mango grove" },
+    ],
+    shoots: [
+      {
+        title: "Pre-wedding and couples",
+        description:
+          "The walkway at golden hour, the deck dressed for two, and fields that go on forever behind you.",
+      },
+      {
+        title: "Proposals and anniversaries",
+        description:
+          "We set the scene, keep the secret and quietly step out of frame.",
+      },
+      {
+        title: "Maternity and family portraits",
+        description:
+          "Soft light in the mango grove and plenty of room for every generation.",
+      },
+      {
+        title: "Birthdays and creators",
+        description:
+          "Styled tables and set-ups for milestone birthdays, brands and content shoots.",
+      },
+    ],
+    highlights: [
+      "Styled set-ups and props",
+      "Golden hour or after deck",
+      "Fairy lights, candles and florals",
+      "Bring your photographer or ask us to suggest one",
+      "Set-ups are an add-on ",
+    ],
   },
 
   gallerySection: {

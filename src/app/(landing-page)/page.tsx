@@ -8,6 +8,7 @@ import GallerySection from "./components/GallerySection";
 import HeroSection from "./components/HeroSection";
 import LocationSection from "./components/LocationSection";
 import { landingPageData } from "./components/pageData";
+import PhotoshootSection from "./components/PhotoshootSection";
 import ReviewSection from "./components/ReviewSection";
 import StaySection from "./components/StaySection";
 
@@ -20,6 +21,7 @@ export default function LandingPage() {
       <ExperienceSection {...landingPageData.experienceSection} />
       <DaySection {...landingPageData.daySection} />
       <CelebrationSection {...landingPageData.celebrationSection} />
+      <PhotoshootSection {...landingPageData.photoshootSection} />
       <GallerySection {...landingPageData.gallerySection} />
       <LocationSection {...landingPageData.locationSection} />
       <ReviewSection {...landingPageData.reviewSection} />

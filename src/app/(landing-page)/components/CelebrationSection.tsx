@@ -20,8 +20,8 @@ const CelebrationSection: React.FC<CelebrationProps> = ({
       sectionClassName="bg-background3"
       containerClassName="grid lg:grid-cols-2 gap-8 lg:gap-14 items-center"
     >
-      <div className="grid grid-cols-2 gap-3 max-lg:order-2">
-        <div className="col-span-2 relative w-full aspect-[16/10] rounded-2xl overflow-hidden">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 max-lg:order-2">
+        <div className="lg:col-span-2 relative w-full aspect-[16/10] rounded-2xl overflow-hidden">
           <Image
             src={images[0]}
             alt="Candlelit dinner set-up on the Paddy Deck"
@@ -33,13 +33,13 @@ const CelebrationSection: React.FC<CelebrationProps> = ({
         {images.slice(1).map((src, index) => (
           <div
             key={src}
-            className="relative w-full aspect-square rounded-2xl overflow-hidden"
+            className="relative w-full aspect-[16/10] lg:aspect-square rounded-2xl overflow-hidden"
           >
             <Image
               src={src}
               alt={`Celebration table set-up ${index + 1}`}
               fill
-              sizes="(max-width: 1024px) 50vw, 22vw"
+              sizes="(max-width: 1024px) 100vw, 22vw"
               className="object-cover"
             />
           </div>
