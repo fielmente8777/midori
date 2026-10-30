@@ -1,5 +1,6 @@
 import ArchImage from "@/components/ArchImage";
 import LinkButton from "@/components/buttons/LinkButton";
+import { btnStyles } from "@/components/buttons/btnStyles";
 import { SectionWithContainer } from "@/components/sectionComponants";
 import { SectionHeading } from "@/components/typography";
 import Image from "next/image";
@@ -7,8 +8,11 @@ import { landingPageData } from "./pageData";
 
 type PhotoshootProps = typeof landingPageData.photoshootSection;
 
+const whiteBtn =
+  "rounded-full bg-white border-white text-dark text-xs md:text-sm px-6! py-2.5!";
+
 const Caption: React.FC<{ text: string }> = ({ text }) => (
-  <span className="absolute left-2 bottom-2 md:left-3 md:bottom-3 rounded-full bg-white px-3 py-1 text-[10px] md:text-xs text-dark">
+  <span className="absolute left-2 bottom-2 md:left-3 md:bottom-3 rounded-full bg-white px-3 py-1 text-xs md:text-sm text-dark">
     {text}
   </span>
 );
@@ -26,23 +30,29 @@ const PhotoshootSection: React.FC<PhotoshootProps> = ({
   return (
     <SectionWithContainer
       sectionClassName="bg-p1"
-      containerClassName="flex flex-col gap-8 lg:gap-10"
+      containerClassName="flex flex-col gap-8 lg:gap-12"
     >
-      <div className="grid lg:grid-cols-2 gap-5 lg:gap-12 lg:items-start">
-        <SectionHeading title={title} light titleClassName="max-w-md" />
-        <div className="flex flex-col gap-4">
-          <p className="text-sm md:text-base text-white max-w-md">
+      <div className="flex max-lg:flex-col lg:justify-between lg:items-center gap-5 lg:gap-12">
+        <SectionHeading
+          title={title}
+          light
+          wrapperClassName="shrink-0"
+          titleClassName="max-w-md"
+        />
+        {/* desktop: pushed to the right edge, description wide enough for two lines */}
+        <div className="flex flex-col gap-4 lg:items-end lg:text-right lg:max-w-[36rem]">
+          <p className="text-sm md:text-base text-white">
             {description}
           </p>
           <LinkButton
             href={button.link}
             label={button.label}
-            className="rounded-full bg-white border-white text-dark text-xs md:text-sm px-6! py-2.5!"
+            className={`${whiteBtn} max-lg:hidden`}
           />
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr_1fr] gap-3">
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr_1fr] gap-4 md:gap-5">
         <div className="relative lg:row-span-2">
           <ArchImage
             src={arch.src}
@@ -100,7 +110,7 @@ const PhotoshootSection: React.FC<PhotoshootProps> = ({
         ))}
       </ol>
 
-      <ul className="flex flex-wrap gap-2">
+      <ul className="flex flex-wrap gap-3">
         {highlights.map((highlight) => (
           <li
             key={highlight}
@@ -110,6 +120,12 @@ const PhotoshootSection: React.FC<PhotoshootProps> = ({
           </li>
         ))}
       </ul>
+
+      <LinkButton
+        href={button.link}
+        label={button.label}
+        className={`${whiteBtn} ${btnStyles.mobileCta}`}
+      />
     </SectionWithContainer>
   );
 };

@@ -15,7 +15,7 @@ const LocationSection: React.FC<LocationProps> = ({
   return (
     <SectionWithContainer
       sectionClassName="relative isolate"
-      containerClassName="grid lg:grid-cols-2 gap-8 items-end min-h-[380px] md:min-h-[420px] content-end"
+      containerClassName="grid lg:grid-cols-2 gap-8 lg:gap-16 items-end min-h-[380px] md:min-h-[420px] content-end"
     >
       <Image
         src={image}
@@ -40,7 +40,7 @@ const LocationSection: React.FC<LocationProps> = ({
               <p className="font-primary font-extralight text-white text-4xl md:text-[60px]">
                 {item.value}
               </p>
-              <p className="text-white/85 text-xs md:text-[15px]">{item.label}</p>
+              <p className="text-white/85 text-xs md:text-base">{item.label}</p>
             </div>
           ))}
         </div>

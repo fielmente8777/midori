@@ -14,9 +14,10 @@ const VillaSlider: React.FC<VillaSliderProps> = ({ images }) => {
     <SwiperCarousel
       data={images}
       modules={[Autoplay, Pagination]}
-      autoplay={{ delay: 3500, disableOnInteraction: false }}
+      autoplay={{ delay: 2000, disableOnInteraction: false }}
       pagination={{ clickable: true }}
-      loop
+      // Swiper's loop needs more slides than are visible; the hut room has only two
+      loop={images.length > 2}
       slidesPerView={1.15}
       spaceBetween={12}
       className="review-slider w-full"

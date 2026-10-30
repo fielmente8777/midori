@@ -11,6 +11,8 @@ interface ArchImageProps {
   className?: string;
   imgClassName?: string;
   priority?: boolean;
+  // thin green line around the arch
+  framed?: boolean;
   tl?: ArchRadius;
   tr?: ArchRadius;
   br?: ArchRadius;
@@ -28,6 +30,7 @@ const ArchImage: React.FC<ArchImageProps> = ({
   className = "",
   imgClassName = "object-cover",
   priority,
+  framed = false,
   tl = "full",
   tr = "full",
   br = "1rem",
@@ -41,7 +44,10 @@ const ArchImage: React.FC<ArchImageProps> = ({
   } as React.CSSProperties;
 
   return (
-    <div className={`arch relative ${className}`} style={style}>
+    <div
+      className={`arch relative ${framed ? "arch--framed" : ""} ${className}`}
+      style={style}
+    >
       <div className="arch__clip">
         <Image
           src={src}

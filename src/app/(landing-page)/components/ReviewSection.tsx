@@ -13,11 +13,11 @@ const ReviewSection: React.FC<ReviewProps> = ({
 }) => {
   return (
     <SectionWithContainer containerClassName="flex flex-col gap-8 lg:gap-12">
-      <div className="grid lg:grid-cols-2 gap-8 items-start">
+      <div className="grid lg:grid-cols-[1.3fr_1fr] gap-8 lg:gap-16 items-start">
         <SectionHeading
           title={title}
           description={description}
-          titleClassName="max-w-md"
+          titleClassName="max-w-xl"
           descriptionClassName="max-w-md"
         />
         <dl className="grid grid-cols-2 gap-x-5 md:gap-x-8">
@@ -26,7 +26,7 @@ const ReviewSection: React.FC<ReviewProps> = ({
               key={item.label}
               className="flex items-center justify-between border-b border-line py-2.5"
             >
-              <dt className="text-xs md:text-[15px] text-light">{item.label}</dt>
+              <dt className="text-xs md:text-base text-light">{item.label}</dt>
               <dd className="text-sm md:text-[17px] text-dark">{item.value}</dd>
             </div>
           ))}

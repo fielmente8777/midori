@@ -106,6 +106,23 @@
   }
 }
 
+// framed arch: a thin line that follows the arch, sitting just outside the photo
+.arch--framed .arch__clip {
+  outline: 1px solid var(--p1);
+  outline-offset: 8px;
+}
+
+// every page image zooms gently on hover (each sits in an overflow-hidden box)
+main img {
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (hover: hover) {
+  main img:hover {
+    transform: scale(1.06);
+  }
+}
+
 // experience cards: staggered jump-up (rise, overshoot, settle) on scroll
 $ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 
@@ -149,8 +166,21 @@ $ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   opacity: 0;
 }
 
+// after the jump-up, each card keeps gently bobbing; the stagger makes them move like a wave
+@keyframes card-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -14px, 0);
+  }
+}
+
 .reveal-ready.is-visible .place-card {
-  animation: jump-up 1s ease-out var(--delay) both;
+  animation:
+    jump-up 1s ease-out var(--delay) both,
+    card-float 3.2s ease-in-out calc(var(--delay) + 1s) infinite;
 
   img {
     animation: media-settle 1.6s $ease-out var(--delay) backwards;
@@ -163,26 +193,97 @@ $ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   }
 }
 
-@keyframes fade-in {
+// day timeline: the line draws downwards, then each step slides in and its dot pops
+@keyframes day-step-in {
   from {
     opacity: 0;
+    transform: translate3d(32px, 0, 0);
   }
   to {
     opacity: 1;
+    transform: translate3d(0, 0, 0);
   }
 }
 
-// "reduce motion" users (incl. Windows with Animation effects off) get a plain fade, no movement
-@media (prefers-reduced-motion: reduce) {
-  .reveal-ready.is-visible .place-card {
-    animation: fade-in 0.8s ease-out var(--delay) both;
+@keyframes day-dot-pop {
+  0% {
+    transform: scale(0);
   }
-  .reveal-ready.is-visible .place-card img {
-    animation: none;
+  60% {
+    transform: scale(1.6);
+    background-color: var(--p1);
   }
-  .place-card__media img {
-    transition: none;
+  100% {
+    transform: scale(1);
   }
+}
+
+.reveal-ready .day-timeline::before {
+  transform: scaleY(0);
+  transform-origin: top;
+}
+
+.reveal-ready.is-visible .day-timeline::before {
+  transform: scaleY(1);
+  transition: transform 1.8s $ease-out;
+}
+
+.reveal-ready .day-step {
+  --delay: calc(0.2s + var(--i, 0) * 0.18s);
+  opacity: 0;
+}
+
+.reveal-ready.is-visible .day-step {
+  animation: day-step-in 0.8s $ease-out var(--delay) both;
+}
+
+.reveal-ready.is-visible .day-step__dot {
+  animation: day-dot-pop 0.6s ease-out var(--delay) both;
+}
+
+// page-wide entrance motion, kept small: soft fade-up on scroll (see ScrollReveal.tsx)
+@keyframes fx-fade-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 28px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+// `backwards` (not `both`) so no transform is left behind, which keeps sticky columns working
+.fx-ready:not(.fx-in) {
+  opacity: 0;
+}
+
+.fx-in {
+  animation: fx-fade-up 0.9s $ease-out calc(var(--fx-i, 0) * 0.12s) backwards;
+}
+
+// hero on load: text lines rise one after another, photo settles from a slight zoom
+@keyframes hero-zoom {
+  from {
+    transform: scale(1.08);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.hero-stagger > * {
+  animation: fx-fade-up 0.9s $ease-out backwards;
+
+  @for $i from 1 through 4 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{0.1s + $i * 0.12s};
+    }
+  }
+}
+
+.hero-image {
+  animation: hero-zoom 1.8s $ease-out backwards;
 }
 
 // react-datepicker theme

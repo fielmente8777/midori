@@ -10,7 +10,7 @@ import VillaSlider from "./slider/VillaSlider";
 type StayProps = typeof landingPageData.staySection;
 
 const TagList = ({ tags }: { tags: string[] }) => (
-  <ul className="dot-list flex flex-wrap gap-x-5 gap-y-1 text-xs md:text-[15px] text-light">
+  <ul className="dot-list flex flex-wrap gap-x-5 gap-y-1 text-xs md:text-base text-light">
     {tags.map((tag) => (
       <li key={tag}>{tag}</li>
     ))}
@@ -23,6 +23,27 @@ const StaySection: React.FC<StayProps> = ({
   villas,
   hut,
 }) => {
+  // hut photos: beside the text on desktop, under the tags on smaller screens
+  const hutImages = (className: string) => (
+    <div className={`grid grid-cols-[1.25fr_1fr] gap-4 md:gap-5 items-end ${className}`}>
+      <ArchImage
+        src={hut.images[0].src}
+        alt={hut.images[0].caption}
+        sizes="(max-width: 1024px) 55vw, 25vw"
+        className="w-full aspect-[3/4]"
+      />
+      <div className="relative w-full aspect-square rounded-2xl overflow-hidden">
+        <Image
+          src={hut.images[1].src}
+          alt={hut.images[1].caption}
+          fill
+          sizes="(max-width: 1024px) 45vw, 20vw"
+          className="object-cover"
+        />
+      </div>
+    </div>
+  );
+
   return (
     <SectionWithContainer
       sectionClassName="bg-background2"
@@ -36,13 +57,17 @@ const StaySection: React.FC<StayProps> = ({
       />
 
       {/* Villas */}
-      <div className="grid lg:grid-cols-[1fr_1.4fr] gap-8 lg:gap-10 items-center">
-        <div className="flex flex-col gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-8 lg:gap-16 items-center">
+        <div className="flex flex-col gap-4 min-w-0">
           <h3 className="font-primary font-light text-2xl md:text-4xl text-dark">
             {villas.title}
           </h3>
           <TagList tags={villas.tags} />
-          <p className="text-light text-sm md:text-[17px]">
+          {/* phones/tablets: slider sits right under the tags */}
+          <div className="w-full min-w-0 lg:hidden mt-2">
+            <VillaSlider images={villas.images} />
+          </div>
+          <p className="text-light text-sm md:text-[17px] mt-2 md:mt-3">
             {villas.description}
           </p>
           <ul className="flex flex-col">
@@ -62,10 +87,7 @@ const StaySection: React.FC<StayProps> = ({
             className={`${btnStyles.green} text-white! max-lg:hidden`}
           />
         </div>
-        <div className="w-full min-w-0 md:hidden">
-          <VillaSlider images={villas.images} />
-        </div>
-        <div className="max-md:hidden grid grid-cols-3 gap-2 md:gap-4 items-start">
+        <div className="max-lg:hidden grid grid-cols-3 gap-4 md:gap-5 items-start">
           {villas.images.map((img, index) => (
             <figure
               key={img.src}
@@ -87,42 +109,30 @@ const StaySection: React.FC<StayProps> = ({
           href={villas.button.link}
           label={villas.button.label}
           calendarIcon
-          className={`${btnStyles.green} text-white! lg:hidden`}
+          className={`${btnStyles.green} ${btnStyles.mobileCta} text-white!`}
         />
       </div>
 
       <div className="h-px w-full bg-line" />
 
       {/* Hut room */}
-      <div className="grid lg:grid-cols-2 gap-8 lg:gap-14 items-center">
-        <div className="grid grid-cols-[1.25fr_1fr] gap-3 items-end">
-          <ArchImage
-            src={hut.images[0].src}
-            alt={hut.images[0].caption}
-            sizes="(max-width: 1024px) 55vw, 25vw"
-            className="w-full aspect-[3/4]"
-          />
-          <div className="relative w-full aspect-square rounded-2xl overflow-hidden">
-            <Image
-              src={hut.images[1].src}
-              alt={hut.images[1].caption}
-              fill
-              sizes="(max-width: 1024px) 45vw, 20vw"
-              className="object-cover"
-            />
-          </div>
-        </div>
-        <div className="flex flex-col gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+        {hutImages("max-lg:hidden")}
+        <div className="flex flex-col gap-4 min-w-0">
           <h3 className="font-primary font-light text-2xl md:text-4xl text-dark">
             {hut.title}
           </h3>
           <TagList tags={hut.tags} />
-          <p className="text-light text-sm md:text-[17px]">{hut.description}</p>
+          {/* phones/tablets: same two images, right under the tags */}
+          {hutImages("lg:hidden mt-2")}
+          <p className="text-light text-sm md:text-[17px] mt-2 md:mt-3">
+            {hut.description}
+          </p>
           <LinkButton
             href={hut.button.link}
             label={hut.button.label}
             calendarIcon
-            className={`${btnStyles.green} text-white!`}
+            className={`${btnStyles.green} text-white! max-lg:mx-auto max-sm:w-full! max-lg:py-2.5!`}
           />
         </div>
       </div>

@@ -14,19 +14,25 @@ const GallerySection: React.FC<GalleryProps> = ({
   images,
 }) => {
   return (
-    <SectionWithContainer containerClassName="flex flex-col gap-8">
+    <SectionWithContainer containerClassName="flex flex-col gap-8 lg:gap-12">
       <div className="flex max-md:flex-col md:items-end justify-between gap-4">
         <SectionHeading title={title} description={description} />
         <LinkButton
           href={button.link}
           label={button.label}
           calendarIcon
-          className={btnStyles.outline}
+          className={`${btnStyles.outline} max-lg:hidden`}
         />
       </div>
       <div className="w-full min-w-0">
         <GallerySlider images={images} />
       </div>
+      <LinkButton
+        href={button.link}
+        label={button.label}
+        calendarIcon
+        className={`${btnStyles.outline} ${btnStyles.mobileCta}`}
+      />
     </SectionWithContainer>
   );
 };

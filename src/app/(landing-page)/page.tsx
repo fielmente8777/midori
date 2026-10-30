@@ -1,3 +1,4 @@
+import ScrollReveal from "@/components/ScrollReveal";
 import AboutSection from "./components/AboutSection";
 import CelebrationSection from "./components/CelebrationSection";
 import DaySection from "./components/DaySection";
@@ -27,6 +28,7 @@ export default function LandingPage() {
       <ReviewSection {...landingPageData.reviewSection} />
       <Faq {...landingPageData.faq} />
       <FinalCta {...landingPageData.finalCta} />
+      <ScrollReveal />
     </main>
   );
 }

@@ -13,7 +13,7 @@ const LandingNavbar = () => {
   }
 
   return (
-    <header className="max_screen_width w-full bg-background2 border-b border-line">
+    <header className="max_screen_width w-full bg-background2 border-b border-line sticky top-0 z-40">
       <Container>
         <nav className="flex py-2 md:py-3 w-full items-center justify-between">
           <div className="relative aspect-[345/117] w-28 md:w-32">

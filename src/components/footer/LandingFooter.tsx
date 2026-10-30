@@ -39,7 +39,7 @@ const LandingFooter = () => {
                 {list.links.map((item, subIndex) => (
                   <li
                     key={subIndex}
-                    className="text-light text-sm md:text-[15px]"
+                    className="text-light text-sm md:text-base"
                   >
                     {item.href ? (
                       <Link

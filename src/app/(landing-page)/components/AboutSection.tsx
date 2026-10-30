@@ -27,10 +27,12 @@ const AboutSection: React.FC<AboutProps> = ({
           src={image}
           alt="Bamboo deck beside the pool at Midori"
           sizes="100vw"
-          className="lg:hidden w-full max-w-sm mx-auto aspect-[4/5]"
+          framed
+          className="lg:hidden w-[calc(100%-1.25rem)] max-w-md mx-auto aspect-[4/5]"
         />
-        <figure className="flex gap-4 max-w-lg">
-          <div className="relative w-12 h-12 shrink-0 rounded-full overflow-hidden">
+        {/* founders' photo: top-left beside the quote, bottom-right under it on phones */}
+        <figure className="flex max-md:flex-col gap-4 max-w-lg">
+          <div className="relative w-12 h-12 shrink-0 rounded-full overflow-hidden max-md:order-2 max-md:self-end">
             <Image
               src={quoteImage}
               alt={quoteBy}
@@ -43,7 +45,7 @@ const AboutSection: React.FC<AboutProps> = ({
             <blockquote className="font-primary font-light text-dark md:text-xl">
               {quote}
             </blockquote>
-            <figcaption className="text-xs md:text-[15px] text-light">
+            <figcaption className="text-xs md:text-base text-light max-md:text-right">
               {quoteBy}
             </figcaption>
           </div>
@@ -52,8 +54,9 @@ const AboutSection: React.FC<AboutProps> = ({
       <ArchImage
         src={image}
         alt="Bamboo deck beside the pool at Midori"
-        sizes="40vw"
-        className="hidden lg:block w-full max-w-md justify-self-center aspect-[4/5]"
+        sizes="45vw"
+        framed
+        className="hidden lg:block w-[calc(100%-1.25rem)] max-w-lg justify-self-center aspect-[4/5]"
       />
     </SectionWithContainer>
   );

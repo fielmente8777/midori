@@ -194,7 +194,13 @@ export const landingPageData = {
     title: "A day at Midori.",
     description:
       "There’s no itinerary here. This is simply how a day tends to unfold.",
-    image: "/images/day6.jpg",
+    images: [
+      { src: "/images/day6.jpg", caption: "Mango trees beside the paddy" },
+      { src: "/images/dinner1.jpg", caption: "A day at Midori" },
+      { src: "/images/photo1.jpg", caption: "A day at Midori" },
+      { src: "/images/photo2.jpg", caption: "A day at Midori" },
+      { src: "/images/day2.jpg", caption: "A day at Midori" },
+    ],
     button: bookNow,
     timeline: [
       {
@@ -306,7 +312,7 @@ export const landingPageData = {
     button: bookNow,
     images: [
       {
-        src: "/images/gallery1",
+        src: "/images/gallery1.jpg",
         caption: "The villas from the pool",
       },
       { src: "/images/gallery2.jpg", caption: "Hand-woven lamps" },

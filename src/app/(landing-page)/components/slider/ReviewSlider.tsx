@@ -56,7 +56,7 @@ const ReviewCard: React.FC<{ item: ReviewType }> = ({ item }) => {
         <span className="w-7 h-7 rounded-full bg-p1 text-white text-xs font-medium flex items-center justify-center">
           {item.name.charAt(0)}
         </span>
-        <p className="text-sm md:text-[15px] text-dark">{item.name}</p>
+        <p className="text-sm md:text-base text-dark">{item.name}</p>
       </div>
     </div>
   );

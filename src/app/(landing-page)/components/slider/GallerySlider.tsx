@@ -85,7 +85,7 @@ const GallerySlider: React.FC<GallerySliderProps> = ({ images }) => {
       <SwiperCarousel
         data={images}
         modules={[Autoplay]}
-        autoplay={{ delay: 3000, disableOnInteraction: false }}
+        autoplay={{ delay: 2000, disableOnInteraction: false }}
         rewind
         onSwiper={setSwiper}
         onAfterInit={updateProgress}
@@ -110,7 +110,7 @@ const GallerySlider: React.FC<GallerySliderProps> = ({ images }) => {
               tl={index % 2 === 0 ? "full" : "1rem"}
               tr={index % 2 === 0 ? "full" : "1rem"}
             />
-            <figcaption className="text-xs md:text-sm text-light text-center">
+            <figcaption className="text-sm md:text-base text-light text-center">
               {item.caption}
             </figcaption>
           </figure>

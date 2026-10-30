@@ -46,7 +46,7 @@ const ExperienceSection: React.FC<ExperienceProps> = ({
             <h3 className="font-primary text-white text-base md:text-[22px]">
               {place.title}
             </h3>
-            <p className="text-white/80 text-xs md:text-[15px]">
+            <p className="text-white/80 text-xs md:text-base">
               {place.description}
             </p>
           </div>
@@ -57,7 +57,7 @@ const ExperienceSection: React.FC<ExperienceProps> = ({
         href={button.link}
         label={button.label}
         calendarIcon
-        className={`${btnStyles.yellow} mx-auto`}
+        className={`${btnStyles.yellow} mx-auto max-sm:w-full! max-lg:py-2.5!`}
       />
 
       <div className="h-px w-full bg-white/30" />
@@ -99,7 +99,7 @@ const ExperienceSection: React.FC<ExperienceProps> = ({
                 <p className="font-primary text-white text-sm md:text-[17px]">
                   {item.title}
                 </p>
-                <p className="text-white/80 text-xs md:text-[15px]">
+                <p className="text-white/80 text-xs md:text-base">
                   {item.description}
                 </p>
               </div>
@@ -110,7 +110,7 @@ const ExperienceSection: React.FC<ExperienceProps> = ({
           href={more.button.link}
           label={more.button.label}
           calendarIcon
-          className={`${btnStyles.yellow} lg:hidden`}
+          className={`${btnStyles.yellow} ${btnStyles.mobileCta}`}
         />
       </div>
     </SectionWithContainer>
