@@ -16,7 +16,7 @@ const DaySection: React.FC<DayProps> = ({
   timeline,
 }) => {
   return (
-    <SectionWithContainer containerClassName="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+    <SectionWithContainer containerClassName="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
       {/* min-w-0 stops the slider stretching the column past the screen edge */}
       <div className="flex flex-col items-center gap-6 min-w-0 lg:sticky lg:top-24">
         <SectionHeading

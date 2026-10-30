@@ -12,7 +12,7 @@ const Faq: React.FC<FaqProps> = ({ title, description, items }) => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <SectionWithContainer containerClassName="grid lg:grid-cols-[1fr_1.5fr] gap-6 lg:gap-16">
+    <SectionWithContainer containerClassName="grid lg:grid-cols-[1fr_1.5fr] gap-8 lg:gap-16">
       <SectionHeading
         title={title}
         description={description}

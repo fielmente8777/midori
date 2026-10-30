@@ -47,7 +47,7 @@ const StaySection: React.FC<StayProps> = ({
   return (
     <SectionWithContainer
       sectionClassName="bg-background2"
-      containerClassName="flex flex-col gap-10 lg:gap-14"
+      containerClassName="flex flex-col gap-8 lg:gap-12"
     >
       <SectionHeading
         title={title}

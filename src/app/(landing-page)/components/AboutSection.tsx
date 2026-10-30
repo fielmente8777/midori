@@ -30,24 +30,23 @@ const AboutSection: React.FC<AboutProps> = ({
           framed
           className="lg:hidden w-[calc(100%-1.25rem)] max-w-md mx-auto aspect-[4/5]"
         />
-        {/* founders' photo: top-left beside the quote, bottom-right under it on phones */}
-        <figure className="flex max-md:flex-col gap-4 max-w-lg">
-          <div className="relative w-12 h-12 shrink-0 rounded-full overflow-hidden max-md:order-2 max-md:self-end">
+        {/* desktop: founders' photo top-left beside the quote.
+            phones: quote first, then name (left) and photo (right) on one line */}
+        <figure className="grid grid-cols-[1fr_auto] md:grid-cols-[auto_1fr] items-center md:items-start gap-x-4 gap-y-0 md:gap-y-2 max-w-lg">
+          <blockquote className="col-span-2 md:col-span-1 md:col-start-2 md:row-start-1 font-primary font-light text-dark md:text-xl">
+            {quote}
+          </blockquote>
+          <figcaption className="md:col-start-2 md:row-start-2 text-sm md:text-base text-light">
+            {quoteBy}
+          </figcaption>
+          <div className="relative w-14 h-14 max-md:-my-1 md:w-12 md:h-12 shrink-0 rounded-full overflow-hidden md:col-start-1 md:row-start-1 md:row-span-2">
             <Image
               src={quoteImage}
               alt={quoteBy}
               fill
-              sizes="48px"
+              sizes="56px"
               className="object-cover"
             />
-          </div>
-          <div className="flex flex-col gap-2">
-            <blockquote className="font-primary font-light text-dark md:text-xl">
-              {quote}
-            </blockquote>
-            <figcaption className="text-xs md:text-base text-light max-md:text-right">
-              {quoteBy}
-            </figcaption>
           </div>
         </figure>
       </div>

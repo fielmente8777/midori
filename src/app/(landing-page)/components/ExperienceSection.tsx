@@ -19,7 +19,7 @@ const ExperienceSection: React.FC<ExperienceProps> = ({
   return (
     <SectionWithContainer
       sectionClassName="bg-p1"
-      containerClassName="flex flex-col gap-10 lg:gap-12"
+      containerClassName="flex flex-col gap-8 lg:gap-12"
     >
       <SectionHeading
         title={title}
@@ -62,7 +62,7 @@ const ExperienceSection: React.FC<ExperienceProps> = ({
 
       <div className="h-px w-full bg-white/30" />
 
-      <div className="grid lg:grid-cols-[1fr_2.2fr] gap-8 lg:gap-12">
+      <div className="grid lg:grid-cols-[1fr_2.2fr] gap-8 lg:gap-16">
         <div className="flex flex-col gap-5">
           <SectionHeading
             title={more.title}
