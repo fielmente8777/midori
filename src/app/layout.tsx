@@ -25,7 +25,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Midori | Luxury Farmstay near Mahabalipuram, Chennai",
   description:
-    "Two art-filled villas and a hut room on five acres of paddy fields and mango groves, with a long linear pool, just over an hour from Chennai. Book direct and save 10%.",
+    "Two art-filled villas and a hut room on five acres of paddy fields and mango groves, with a long linear pool, just over an hour from Chennai. Book early and save 10%.",
 };
 
 export const viewport: Viewport = {

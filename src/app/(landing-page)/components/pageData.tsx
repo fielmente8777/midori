@@ -18,7 +18,7 @@ const bookNow = { label: "BOOK YOUR STAY", link: "#form" };
 
 export const landingPageData = {
   offer:
-    "Book direct and save 10%, with a <strong>South Indian breakfast</strong> on us every morning.",
+    "Book early and save 10%, with a <strong>South Indian breakfast</strong> on us every morning.",
 
   hero: {
     tag: "Mahabalipuram, near Chennai",
