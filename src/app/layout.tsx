@@ -45,6 +45,10 @@ export default function RootLayout({
       className={`${montserrat.variable} ${inter.variable} h-full antialiased`}
     >
       <head>
+        <meta
+          name="google-site-verification"
+          content="cm5shn4RIVkg1HiaA-mBCl4vK-YiFTy4LORyhx6UjsA"
+        />
         {/* <!-- Google tag (gtag.js) --> */}
         <script
           async
