@@ -50,12 +50,13 @@ export default function RootLayout({
           content="cm5shn4RIVkg1HiaA-mBCl4vK-YiFTy4LORyhx6UjsA"
         />
         {/* <!-- Google tag (gtag.js) --> */}
+
         <script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-H3EE21NLMW"
         ></script>
         <Script id="google-analytics" strategy="afterInteractive">
-          {`window.dataLayer = window.dataLayer || [];
+          {` window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
