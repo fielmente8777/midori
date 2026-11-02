@@ -44,6 +44,21 @@ export default function RootLayout({
       lang="en"
       className={`${montserrat.variable} ${inter.variable} h-full antialiased`}
     >
+      <head>
+        {/* <!-- Google tag (gtag.js) --> */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-H3EE21NLMW"
+        ></script>
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-H3EE21NLMW');`}
+        </Script>
+      </head>
+
       {/* Add Meta Pixel / GA4 / GTM / EazBot scripts for Midori here */}
       <body suppressHydrationWarning={true}>
         <WebProvider>
